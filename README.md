@@ -76,6 +76,8 @@ An orchestration layer like Airflow would manage scheduling, dependencies, and a
 
 ## Improvements With More Time
 - Add row-loss checks and completeness checks (e.g. using packages like Great Expectations)
+- Decide how to handle null's in not primary key fields like `customer_email` and `installer_partner_id`
+- Change the logic on the data quality report to insert into instead of recreate each run to have a history (Keeping a history of data quality reports allows teams to spot recurring/worsening issues)
 - Alerting when validation failures exceed defined thresholds
 - Incremental ingestion and comparison against previous runs
 - Support for ingesting multiple input files at scale
