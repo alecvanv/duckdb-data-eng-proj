@@ -353,7 +353,7 @@ def main() -> None:
         
             -- LMS flags / QA fields
             l.flag_loan_id_null,
-            l.flag_application_id_null,
+            l.flag_application_id_null as flag_application_id_null_lms,
             l.flag_application_id_invalid_format,
             l.flag_current_balance_negative,
             l.flag_days_past_due_negative,
