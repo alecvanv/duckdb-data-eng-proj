@@ -60,10 +60,6 @@ A `data_quality_report` table summarizes record counts, validation failures by t
 ---
 
 ## Production Deployment 
-In production, this pipeline would run as a scheduled job (e.g. Airflow or similar), ingesting data into a persistent data warehouse. Outputs would be written to a data lake or warehouse (e.g. S3 + Redshift or Snowflake), with monitoring on validation thresholds to surface upstream data issues early.
-
-## How I’d Deploy This in Production
-
 In a production setup, I wouldn’t run this directly on DuckDB. DuckDB is well suited for local development and adhoc analysis, but not the right tool for a scalable production environment. In a live environment the first step is reliably ingesting data from source systems.
 
 Loan applications received via the partners APIs would be written to an operational database (processed immediately — validated, checked against business rules, and acted on (approved, declined, queued for review, etc.)) and then ingested into cloud storage (for example S3), either in near-real time or in incremental batches. Daily updates from the Loan Management System would be pulled on a schedule and stored as raw files. Tools like AWS Glue would be used for ingestion.
